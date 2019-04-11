@@ -28,6 +28,7 @@ import           Control.Monad.Trans.State.Strict (StateT, runStateT, evalStateT
 import           Control.Monad.Writer.Strict (Writer(), runWriter)
 
 import qualified Language.PureScript as P
+import qualified Language.PureScript.Make as P
 import qualified Language.PureScript.Names as N
 import qualified Language.PureScript.Constants as C
 

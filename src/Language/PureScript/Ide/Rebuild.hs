@@ -15,6 +15,7 @@ import qualified Data.Map.Lazy                   as M
 import           Data.Maybe                      (fromJust)
 import qualified Data.Set                        as S
 import qualified Language.PureScript             as P
+import qualified Language.PureScript.Make        as P
 import           Language.PureScript.Ide.Error
 import           Language.PureScript.Ide.Logging
 import           Language.PureScript.Ide.State

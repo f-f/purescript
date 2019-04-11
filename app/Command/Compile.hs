@@ -18,6 +18,7 @@ import           Data.Text (Text)
 import qualified Data.Text as T
 import           Data.Traversable (for)
 import qualified Language.PureScript as P
+import qualified Language.PureScript.Make as P
 import           Language.PureScript.Errors.JSON
 import           Language.PureScript.Make
 import qualified Options.Applicative as Opts

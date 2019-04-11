@@ -28,6 +28,7 @@ import Web.Bower.PackageMeta (PackageName)
 
 import Text.Parsec (eof)
 
+
 -- |
 -- Like convertModuleInPackage, but with the modules tagged by their
 -- file paths.

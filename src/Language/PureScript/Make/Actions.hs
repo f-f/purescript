@@ -39,6 +39,7 @@ import qualified Language.PureScript.CoreFn as CF
 import qualified Language.PureScript.CoreFn.ToJSON as CFJ
 import qualified Language.PureScript.CoreImp.AST as Imp
 import           Language.PureScript.Crash
+import qualified Language.PureScript.Docs.Compile as DC
 import           Language.PureScript.Environment
 import           Language.PureScript.Errors
 import           Language.PureScript.Make.Monad
@@ -134,6 +135,7 @@ buildMakeActions outputDir filePathMap foreigns usePrefix =
     JS -> outputFilename mn "index.js"
     JSSourceMap -> outputFilename mn "index.js.map"
     CoreFn -> outputFilename mn "corefn.json"
+    Docs -> outputFilename mn "docs.json"
 
   getOutputTimestamp :: ModuleName -> Make (Maybe UTCTime)
   getOutputTimestamp mn = do
@@ -156,6 +158,10 @@ buildMakeActions outputDir filePathMap foreigns usePrefix =
       let coreFnFile = targetFilename mn CoreFn
           json = CFJ.moduleToJSON Paths.version m
       lift $ writeTextFile coreFnFile (encode json)
+    when (S.member Docs codegenTargets) $ do
+      let docsFile = targetFilename mn Docs
+          json = DC.convertToJSON m
+      lift $ writeTextFile docsFile (encode json)
     when (S.member JS codegenTargets) $ do
       foreignInclude <- case mn `M.lookup` foreigns of
         Just _
